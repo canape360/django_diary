@@ -14,6 +14,9 @@ urlpatterns = [
     # Django Admin
     path("admin/", admin.site.urls),
 
+    # Django 標準ログイン / ログアウト
+    path("accounts/", include("django.contrib.auth.urls")),
+
     # アプリのURL（トップページ含む）
     path("", include("myapp.urls")),
 ]
