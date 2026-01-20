@@ -1,0 +1,9 @@
+<h1>Welcome to Django Diary</h1>
+
+{% if user.is_authenticated %}
+  <p>こんにちは {{ user.username }}</p>
+  <a href="/wholediary/">日記を見る</a>
+  <a href="/logout/">ログアウト</a>
+{% else %}
+  <a href="/accounts/login/">ログイン</a>
+{% endif %}
