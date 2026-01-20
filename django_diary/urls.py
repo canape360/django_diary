@@ -1,19 +1,19 @@
 from django.contrib import admin
-from django.urls import path
-from myapp.views import home
+from django.urls import path, include
 from django.http import HttpResponse
 
 
 def healthz(request):
     return HttpResponse("ok")
 
+
 urlpatterns = [
+    # Render Health Check 用（必ず 200 を返す）
     path("healthz", healthz),
-    # 既存の urls...
-]
 
-
-urlpatterns = [
+    # Django Admin
     path("admin/", admin.site.urls),
-    path("", home),
+
+    # アプリのURL（トップページ含む）
+    path("", include("myapp.urls")),
 ]
