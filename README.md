@@ -65,9 +65,9 @@ DEBUG=true
 [管理画面へログイン](https://django-canape-1.onrender.com/admin/)
 
  #管理画面へログイン
- 
+
 ```bash
-  /Users/user1/projects/django_diary/.env.example
+ 
 
 ```
 
