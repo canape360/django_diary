@@ -62,6 +62,16 @@ DEBUG=true
 
 [別物/ログイン画面](https://django-canape-1.onrender.com/)
 
+[管理画面へログイン](https://django-canape-1.onrender.com/admin/)
+
+ #管理画面へログイン
+ 
+```bash
+  /Users/user1/projects/django_diary/.env.example
+
+```
+
+
 ```bash
 /admin/auth/user/　　　：を付けてユーザーの違いを見る
 ```
