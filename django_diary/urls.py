@@ -20,3 +20,6 @@ urlpatterns = [
 
     path("", include("myapp.urls")),
 ]
+# django_diary/urls.py
+
+

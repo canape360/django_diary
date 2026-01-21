@@ -11,3 +11,15 @@ staticfiles/
 
 # Environment variables
 .env
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtualenv
+.venv/
+venv/
+
+# Django
+db.sqlite3
+staticfiles/

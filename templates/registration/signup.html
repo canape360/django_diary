@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="page-title">新規登録</h1>
+
+<div class="detail-card">
+
+  {# messages（合言葉違い等） #}
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="message">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {# form errors（ユーザー名重複/パスワード条件など） #}
+  {% if form.errors %}
+    <div class="form-errors">
+      <p class="form-errors__title">入力内容を確認してください</p>
+      {{ form.errors }}
+    </div>
+  {% endif %}
+
+  <form method="post" class="form">
+    {% csrf_token %}
+
+    <p class="form-row">
+      <label for="id_signup_code">合言葉</label><br>
+      <input id="id_signup_code" type="text" name="signup_code" required>
+    </p>
+
+    {{ form.as_p }}
+
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">登録する</button>
+      <a class="btn btn-ghost" href="{% url 'login' %}">ログインへ</a>
+    </div>
+  </form>
+
+</div>
+{% endblock %}

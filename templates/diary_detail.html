@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="detail-head">
+  <div>
+    <h1 class="page-title">{{ diary.title }}</h1>
+    <p class="muted">{{ diary.created_at|date:"Y-m-d H:i" }}</p>
+  </div>
+
+  <div class="detail-head__actions">
+    <a class="btn btn-ghost" href="{% url 'myapp:diary_edit' diary.pk %}">編集</a>
+    <a class="btn btn-danger" href="{% url 'myapp:diary_delete' diary.pk %}">削除</a>
+    <a class="btn" href="{% url 'myapp:wholediary' %}">一覧へ</a>
+  </div>
+</div>
+
+<article class="detail-card">
+  <div class="detail-body">
+    {{ diary.body|linebreaksbr }}
+  </div>
+</article>
+{% endblock %}

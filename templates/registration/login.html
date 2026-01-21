@@ -1,17 +1,41 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Login</title>
-</head>
-<body>
-  <h1>Login</h1>
+{% extends "base.html" %}
+{% load static %}
+{% block body_class %}is-login{% endblock %}
 
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+{% block content %}
+<div class="login-page">
+  <div class="login-card">
+    <h1 class="page-title">Login</h1>
 
-</body>
-</html>
+    <form method="post">
+      {% csrf_token %}
+
+      {% if form.errors %}
+        <div class="form-error">
+          ユーザー名またはパスワードが正しくありません
+        </div>
+      {% endif %}
+
+      <div class="form-group">
+        <label for="id_username">ユーザー名</label>
+        {{ form.username }}
+      </div>
+
+      <div class="form-group">
+        <label for="id_password">パスワード</label>
+        {{ form.password }}
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full">
+        ログイン
+      </button>
+
+      <input type="hidden" name="next" value="{{ next }}">
+        <p class="muted">
+        アカウントをお持ちでない場合：
+        <a href="{% url 'myapp:signup' %}">新規登録</a>
+        </p>
+    </form>
+  </div>
+</div>
+{% endblock %}

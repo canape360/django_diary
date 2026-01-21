@@ -1,9 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
 <h1>Welcome to Django Diary</h1>
 
 {% if user.is_authenticated %}
   <p>こんにちは {{ user.username }}</p>
-  <a href="/wholediary/">日記を見る</a>
-  <a href="/logout/">ログアウト</a>
+  <p><a href="{% url 'myapp:wholediary' %}">日記一覧へ</a></p>
 {% else %}
-  <a href="/accounts/login/">ログイン</a>
+  <p>日記を書くにはログインが必要です。</p>
+  <p><a href="{% url 'login' %}">ログイン</a></p>
+
+  <p class="home-description">
+  このアプリは、ログインしたユーザー専用の日記サービスです。
+</p>
+
+<p class="home-description">
+  日記の作成・編集・削除ができ、一覧や詳細画面から
+  いつでも自分の記録を振り返ることができます。
+</p>
+
+<p class="home-description">
+  記録した内容は、ログインしている本人のみが閲覧できます。
+  安心して日常の出来事を書き留めてください。
+</p>
+<p class="home-description subtle">
+  波音のように、静かに続いていく日常を記録するための場所です。
+</p>
 {% endif %}
+{% endblock %}
+<!-- templates/home.html -->

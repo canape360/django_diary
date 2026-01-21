@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="page-title">削除しますか？</h1>
+
+<div class="detail-card">
+  <p>「<strong>{{ diary.title }}</strong>」を削除します。元に戻せません。</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">削除する</button>
+    <a class="btn" href="{% url 'myapp:diary_detail' diary.pk %}">キャンセル</a>
+  </form>
+</div>
+{% endblock %}

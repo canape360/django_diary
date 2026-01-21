@@ -1,0 +1,520 @@
+/* --- 基本設定 --- */
+body {
+  margin: 0;
+  font-family: "Hiragino Sans", "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  color: #033649;
+}
+
+/* --- ヘッダー --- */
+.site-header {
+  background: linear-gradient(
+    to right,
+    #00bcd4,
+    #4dd0e1,
+    #80deea
+  );
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* --- ナビ --- */
+.nav a {
+  margin-left: 18px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* --- メイン --- */
+.site-main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* --- フッター --- */
+.site-footer {
+  margin-top: 60px;
+  padding: 20px;
+  text-align: center;
+  background: #033649;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+/* ===== 湘南リゾート：カードUI ===== */
+
+.page-title {
+  margin: 0 0 16px;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+.page-actions {
+  margin-bottom: 18px;
+}
+
+/* ボタン */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #00bcd4, #4dd0e1);
+  color: #ffffff;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* カードの並び（レスポンシブ） */
+.diary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* 画面が狭いときは1列 */
+@media (max-width: 820px) {
+  .diary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* カード本体 */
+.diary-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.10);
+  border: 1px solid rgba(255,255,255,0.65);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ほんのり“波”っぽいハイライト */
+.diary-card::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at 30% 30%, rgba(0,188,212,0.25), rgba(0,188,212,0) 60%);
+  transform: rotate(12deg);
+}
+
+.diary-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.diary-card__title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #033649;
+}
+
+.diary-card__time {
+  font-size: 0.85rem;
+  color: rgba(3,54,73,0.65);
+  white-space: nowrap;
+}
+
+.diary-card__body {
+  line-height: 1.75;
+  color: rgba(3,54,73,0.92);
+}
+
+/* 空状態 */
+.empty-state {
+  padding: 22px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.10);
+}
+/* ===== 湘南リゾート：ログイン ===== */
+
+.login-card {
+  max-width: 420px;
+  margin: 40px auto 20px;
+  padding: 24px 22px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 18px;
+  box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: #033649;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.15);
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px rgba(0,188,212,0.25);
+}
+
+.btn-full {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.form-error {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  background: rgba(255, 99, 71, 0.15);
+  border-radius: 10px;
+  color: #b71c1c;
+  font-weight: 700;
+}
+/* ===== ログイン画面：海グラデ背景＋中央寄せ ===== */
+
+.login-page {
+  min-height: calc(100vh - 140px); /* header + footer 分を引く */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 湘南・海グラデーション */
+  background:
+    linear-gradient(
+      to bottom,
+      #b3ecff 0%,
+      #e0f7fa 35%,
+      #ffffff 70%
+    );
+}
+
+/* ログインカード（少しだけ調整） */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 26px 24px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* タイトル中央寄せ */
+.login-card .page-title {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+/* スマホ用微調整 */
+@media (max-width: 600px) {
+  .login-card {
+    margin: 0 14px;
+    padding: 22px 18px;
+  }
+}
+/* ログインページでは白いmain箱を消して、海グラデを全面に見せる */
+.is-login .site-main {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  margin: 0 auto;
+}
+/* ===== 共通小物 ===== */
+.muted { color: rgba(3,54,73,0.65); }
+
+/* 一覧のリンク */
+.diary-link {
+  color: inherit;
+  text-decoration: none;
+}
+.diary-link:hover { text-decoration: underline; }
+
+/* カード内アクション */
+.diary-card__actions {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* 詳細カード */
+.detail-card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.10);
+}
+.detail-body {
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.detail-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ボタン種類（既存btnがある前提） */
+.btn-ghost {
+  background: rgba(255,255,255,0.7);
+  color: #033649;
+}
+
+.btn-danger {
+  background: rgba(220, 53, 69, 0.14);
+  color: #b71c1c;
+  border: 1px solid rgba(220, 53, 69, 0.25);
+}
+/* ===== 詳細ページ ===== */
+
+.detail-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.detail-head__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.detail-card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.10);
+}
+
+.detail-body {
+  line-height: 1.9;
+  font-size: 1.05rem;
+  color: rgba(3,54,73,0.95);
+  white-space: normal;
+}
+/* =========================================================
+   SHONAN RESORT DIARY – FINAL (決定版)
+   ========================================================= */
+
+/* ===== 日記一覧：本文3行省略（互換性対応） ===== */
+
+.diary-card__excerpt {
+  /* 標準 */
+  line-clamp: 3;
+
+  /* WebKit系 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+
+  /* 共通 */
+  overflow: hidden;
+  line-height: 1.7;
+  max-height: calc(1.7em * 3);
+
+  color: #333;
+}
+
+/* 控えめな省略記号（常時表示になるのは仕様：上品優先） */
+.diary-card__excerpt::after {
+  content: " …";
+  color: rgba(0, 0, 0, 0.35);
+}
+
+/* ===== 続きを読む（湘南リゾート風） ===== */
+
+.diary-card__readmore {
+  margin-top: 0.6rem;
+}
+
+.diary-card__readmore a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1ca7a6;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  transition: color 0.2s ease;
+}
+
+.diary-card__readmore a::after {
+  content: "→";
+  transition: transform 0.2s ease;
+}
+
+.diary-card__readmore a:hover {
+  color: #138b8a;
+}
+
+.diary-card__readmore a:hover::after {
+  transform: translateX(4px);
+}
+
+/* ===== NEW バッジ（小さく爽やかに） ===== */
+
+.badge-new {
+  margin-left: 0.4rem;
+  padding: 0.15em 0.45em;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+
+  color: #fff;
+  background: linear-gradient(135deg, #38d9a9, #1ca7a6);
+
+  border-radius: 999px;
+  vertical-align: middle;
+
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== フッター（リンクは淡いミント） ===== */
+
+.site-footer {
+  margin-top: 4rem;
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.site-footer a {
+  color: #b9dddd;              /* 既存テーマと統一 */
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===== 静的ページ（プライバシー/免責） ===== */
+
+.static-page {
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.9;
+  color: #333;
+}
+
+.static-page h2 {
+  margin-top: 1.4rem;
+  font-size: 1.05rem;
+}
+
+/* ===== ホーム説明文 ===== */
+
+.home-description {
+  max-width: 640px;
+  margin: 1rem auto;
+  line-height: 1.9;
+  color: #444;
+}
+
+.home-description.subtle {
+  color: #777;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.messages {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.messages .message {
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 80, 80, 0.10);
+  border: 1px solid rgba(255, 80, 80, 0.25);
+  color: #b10000;
+}
+
+.form-errors {
+  margin: 1rem 0;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+}
+
+.form-errors__title {
+  margin: 0 0 0.4rem;
+  font-weight: 700;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 0.8rem;
+}

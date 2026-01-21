@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="page-title">日記一覧</h1>
+
+<div class="page-actions">
+  <a class="btn btn-primary" href="{% url 'myapp:diary_create' %}">＋ 新規作成</a>
+</div>
+
+{% if diaries %}
+  <div class="diary-grid">
+    {% for d in diaries %}
+      <article class="diary-card">
+
+        <div class="diary-card__header">
+          <h2 class="diary-card__title">
+            <a class="diary-link" href="{% url 'myapp:diary_detail' d.pk %}">
+              {{ d.title }}
+            </a>
+
+            {% if d.created_at|timesince < "1 day" %}
+              <span class="badge-new">NEW</span>
+            {% endif %}
+          </h2>
+
+          <time class="diary-card__time">
+            {{ d.created_at|date:"Y-m-d H:i" }}
+          </time>
+        </div>
+
+        <div class="diary-card__body diary-card__excerpt">
+          {{ d.body|linebreaksbr }}
+        </div>
+
+        <div class="diary-card__readmore">
+          <a href="{% url 'myapp:diary_detail' d.pk %}">続きを読む →</a>
+        </div>
+
+        <div class="diary-card__actions">
+          <a class="btn btn-ghost" href="{% url 'myapp:diary_edit' d.pk %}">編集</a>
+          <a class="btn btn-danger" href="{% url 'myapp:diary_delete' d.pk %}">削除</a>
+        </div>
+
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="empty-state">
+    <p>まだ日記がありません。</p>
+    <a class="btn btn-primary" href="{% url 'myapp:diary_create' %}">最初の日記を書く</a>
+  </div>
+{% endif %}
+{% endblock %}
