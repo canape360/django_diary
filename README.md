@@ -79,13 +79,13 @@ DEBUG=true
 
 ## アクセス先
 
-[PaaS「クラウド公開サービス」](https://dashboard.render.com/)
-[GitHub「プログラムの保管」 ](https://github.com/canape360/django_diary)
+[PaaS「クラウド公開サービス」](https://dashboard.render.com/)　/
+[GitHub「プログラムの保管」 ](https://github.com/canape360/django_diary)　/
 
-[管理画面/ログイン画面](https://django-diary.onrender.com/admin/login/?next=/admin/)
-[アプリ/ログイン画面](https://django-diary.onrender.com/)
+[管理画面/ログイン画面](https://django-diary.onrender.com/admin/login/?next=/admin/)　/
+[アプリ/ログイン画面](https://django-diary.onrender.com/)　/
 
-[日記アプリ/ログイン画面](https://django-canape-1.onrender.com/)
+[日記アプリ/ログイン画面](https://django-canape-1.onrender.com/)　/
 [管理画面へログイン](https://django-canape-1.onrender.com/admin/)
 
 ```bash
