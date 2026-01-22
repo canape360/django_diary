@@ -1,76 +1,92 @@
-#  🎉🎉🎉 大成功です！ 🎉🎉🎉Render にデプロイ完了
+#  🎉 Render にデプロイ完了 
+
+ ## 構成
 
 ```text
-これからの「正しい運用ルール」
-🧑‍💻 開発中（今）
+Python Webフレームワーク  : Django
+PaaS（クラウド公開        : Render
+ソースコード管理.         : GitHub
+```
 
+## 開発環境（ローカル）
+
+ #基本ルール
+開発中は Django の開発サーバーを使用
+DEBUG=True で動かす
+
+ #起動コマンド🧑‍💻 開発中
+
+```bash
 DEBUG=true python manage.py runserver
+```
 
+### 「作る・試す」はローカル、「公開」は GitHub に push した瞬間
 
-これ一本でOK。
+無料プランでは「本番サーバーに入るターミナル」は存在しません
 
-🚀 本番（Render など）
+## 本番環境（Render）
 
-Render の Environment に：
+ #基本ルール
+DEBUG は必ず False
+環境変数は Render 側で管理
+静的ファイルは collectstatic + WhiteNoise（manifest方式）
 
-DEBUG=false
+ #Render の Environment 設定
 
-デプロイ時に：
+ ```text
+ DEBUG=false
+ ```
 
+ #デプロイ時に実行されるコマンド
+
+ ```bash
+ python manage.py collectstatic --noinput
+ ```
+
+ これにより：
+staticfiles.json（manifest）が生成される
+WhiteNoise が正しく静的ファイルを配信する
+本番向けの安全な挙動になる
+
+デプロイ時に実行されるコマンド
 python manage.py collectstatic --noinput
 
+これにより：
+staticfiles.json（manifest）が生成される
+WhiteNoise が正しく静的ファイルを配信する
+本番向けの安全な挙動になる
 
-これで manifest 方式が正しく動きます。
----
-便利ワザ（毎回打ちたくない人向け）
-方法1：alias（おすすめ）
+🛠 便利ワザ（開発効率UP）
+方法①：alias（おすすめ）
+毎回長いコマンドを打たないために：
+
+```bash
 alias djrun='DEBUG=true python manage.py runserver'
 
-
-以後は：
-
+以後はこれだけ👇
 djrun
+```
 
-方法2：.env（開発用）
+方法②：.env ファイル（開発用）
 
-.env に：
+.env
 
 DEBUG=true
 
+⚠️ 注意：
+.env は 必ず .gitignore に追加
+本番では使わない（Render の Environment を使う）
 
-（※ .gitignore に .env を入れておく）
+## アクセス先
 
-```
-
-
-
-
-
-[Renderダッシュボードにログイン](https://dashboard.render.com/)
-
-[利用github canape360](https://github.com/canape360/django_diary)
-
-[django-diary](https://django-diary.onrender.com/)
-
-[django-canape-1](https://django-canape-1.onrender.com/)
-
-[Welcome to Django](https://django-diary.onrender.com/accounts/login/?next=/)
+[PaaS「クラウド公開サービス」](https://dashboard.render.com/)
+[GitHub「プログラムの保管」 ](https://github.com/canape360/django_diary)
 
 [管理画面/ログイン画面](https://django-diary.onrender.com/admin/login/?next=/admin/)
+[アプリ/ログイン画面](https://django-diary.onrender.com/)
 
-[本来のアプリ/ログイン画面](https://django-diary.onrender.com/)
-
-[別物/ログイン画面](https://django-canape-1.onrender.com/)
-
+[日記アプリ/ログイン画面](https://django-canape-1.onrender.com/)
 [管理画面へログイン](https://django-canape-1.onrender.com/admin/)
-
- #管理画面へログイン
-
-```bash
- 
-
-```
-
 
 ```bash
 /admin/auth/user/　　　：を付けてユーザーの違いを見る
