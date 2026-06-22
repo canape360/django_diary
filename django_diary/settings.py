@@ -102,8 +102,8 @@ TEMPLATES = [
     },
 ]
 
-LOGIN_REDIRECT_URL = "myapp:wholediary"
-LOGOUT_REDIRECT_URL = "myapp:home"
+LOGIN_REDIRECT_URL = "/wholediary/"
+LOGOUT_REDIRECT_URL = "/"
 
 
 # ========================
