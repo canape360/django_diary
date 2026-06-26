@@ -17,7 +17,9 @@ DEBUG=True で動かす
  #起動コマンド🧑‍💻 開発中
 
 ```bash
+s
 DEBUG=true python manage.py runserver
+
 ```
 
 ### 「作る・試す」はローカル、「公開」は GitHub に push した瞬間
