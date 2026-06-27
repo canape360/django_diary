@@ -12,16 +12,16 @@
   </p>
   {% if user.is_authenticated %}
     <div class="welcome__cta">
-      <a href="/diary/new/" class="btn btn-primary btn-block">✏️ 新しい日記を書く</a>
+      <a href="{% url 'diary_new' %}" class="btn btn-primary btn-block">✏️ 新しい日記を書く</a>
     </div>
-    <a href="/wholediary/" class="btn btn-secondary">📖 日記一覧を見る</a>
+    <a href="{% url 'diary_list' %}" class="btn btn-secondary">📖 日記一覧を見る</a>
   {% else %}
     <div class="welcome__cta">
       <a href="{% url 'login' %}" class="btn btn-primary btn-block">ログイン</a>
     </div>
     <p class="text-muted">
       アカウントをお持ちでない方は
-      <a href="/accounts/signup/">新規登録</a>
+      <a href="{% url 'signup' %}">新規登録</a>
     </p>
   {% endif %}
 </div>

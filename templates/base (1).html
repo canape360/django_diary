@@ -25,10 +25,7 @@
       <a href="/wholediary/">日記一覧</a>
       {% if user.is_authenticated %}
         <a href="/diary/new/">新規作成</a>
-        <form method="post" action="{% url 'logout' %}" style="margin:0;">
-          {% csrf_token %}
-          <button type="submit" class="navbar__logout-btn">ログアウト ({{ user.username }})</button>
-        </form>
+        <a href="{% url 'logout' %}">ログアウト ({{ user.username }})</a>
       {% else %}
         <a href="{% url 'login' %}">ログイン</a>
         <a href="/accounts/signup/">新規登録</a>

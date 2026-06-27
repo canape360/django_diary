@@ -4,19 +4,21 @@
 
 {% block content %}
 <div style="margin-bottom:1rem;">
-  <a href="/wholediary/" class="text-muted" style="font-size:0.88rem;">← 一覧に戻る</a>
+  <a href="{% url 'diary_list' %}" class="text-muted" style="font-size:0.88rem;">← 一覧に戻る</a>
 </div>
 
 <div class="diary-detail">
   <h1>{{ diary.title }}</h1>
   <div class="diary-detail__meta">
-    📅 {{ diary.created_at|date:"Y年n月j日 H:i" }}
+    📅 {{ diary.date|date:"Y年n月j日 (D)" }}
   </div>
   <div class="diary-detail__body">{{ diary.body }}</div>
+
   <hr class="divider">
+
   <div class="card__actions">
-    <a href="/diary/{{ diary.pk }}/edit/" class="btn btn-secondary">✏️ 編集</a>
-    <a href="/diary/{{ diary.pk }}/delete/" class="btn btn-danger">🗑️ 削除</a>
+    <a href="{% url 'diary_edit' diary.pk %}" class="btn btn-secondary">✏️ 編集</a>
+    <a href="{% url 'diary_delete' diary.pk %}" class="btn btn-danger">🗑️ 削除</a>
   </div>
 </div>
 {% endblock %}

@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}日記を編集 | Django Diary{% endblock %}
+{% block title %}{% if diary %}日記を編集{% else %}新しい日記{% endif %} | Django Diary{% endblock %}
 
 {% block content %}
 <div style="margin-bottom:1rem;">
-  <a href="/diary/{{ diary.pk }}/" class="text-muted" style="font-size:0.88rem;">← 詳細に戻る</a>
+  <a href="{% url 'diary_list' %}" class="text-muted" style="font-size:0.88rem;">← 一覧に戻る</a>
 </div>
 
-<h1>✏️ 日記を編集</h1>
+<h1>{% if diary %}✏️ 日記を編集{% else %}✏️ 新しい日記{% endif %}</h1>
 
 <div class="card">
   <form method="post">
     {% csrf_token %}
+
     {% for field in form %}
       <div class="form-group">
         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
@@ -21,11 +22,15 @@
             <p style="color:var(--color-danger); font-size:0.82rem; margin-top:0.3rem;">{{ error }}</p>
           {% endfor %}
         {% endif %}
+        {% if field.help_text %}
+          <p class="text-muted" style="margin-top:0.3rem;">{{ field.help_text }}</p>
+        {% endif %}
       </div>
     {% endfor %}
+
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">💾 保存する</button>
-      <a href="/diary/{{ diary.pk }}/" class="btn btn-secondary">キャンセル</a>
+      <a href="{% url 'diary_list' %}" class="btn btn-secondary">キャンセル</a>
     </div>
   </form>
 </div>
