@@ -1,41 +1,38 @@
-{% extends "base.html" %}
-{% load static %}
-{% block body_class %}is-login{% endblock %}
+{% extends 'base.html' %}
+
+{% block title %}ログイン | Django Diary{% endblock %}
 
 {% block content %}
-<div class="login-page">
-  <div class="login-card">
-    <h1 class="page-title">Login</h1>
+<div class="auth-box">
+  <h1 style="text-align:center; margin-bottom:1.5rem;">ログイン</h1>
 
-    <form method="post">
-      {% csrf_token %}
-
-      {% if form.errors %}
-        <div class="form-error">
-          ユーザー名またはパスワードが正しくありません
-        </div>
-      {% endif %}
-
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
       <div class="form-group">
-        <label for="id_username">ユーザー名</label>
-        {{ form.username }}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+          {% for error in field.errors %}
+            <p style="color:var(--color-danger); font-size:0.82rem; margin-top:0.3rem;">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
       </div>
+    {% endfor %}
 
-      <div class="form-group">
-        <label for="id_password">パスワード</label>
-        {{ form.password }}
-      </div>
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <p style="color:var(--color-danger); font-size:0.88rem; margin-bottom:0.75rem;">{{ error }}</p>
+      {% endfor %}
+    {% endif %}
 
-      <button type="submit" class="btn btn-primary btn-full">
-        ログイン
-      </button>
+    <button type="submit" class="btn btn-primary btn-block" style="margin-top:0.5rem;">ログイン</button>
+  </form>
 
-      <input type="hidden" name="next" value="{{ next }}">
-        <p class="muted">
-        アカウントをお持ちでない場合：
-        <a href="{% url 'myapp:signup' %}">新規登録</a>
-        </p>
-    </form>
-  </div>
+  <hr class="divider">
+  <p class="text-center text-muted">
+    アカウントをお持ちでない方は<br>
+    <a href="/accounts/signup/">新規登録</a>
+  </p>
 </div>
 {% endblock %}
